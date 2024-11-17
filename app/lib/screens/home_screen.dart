@@ -7,13 +7,14 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   final List<Map<String, dynamic>> messageBoards = const [
-    {'name': 'General', 'icon': Icons.chat_bubble, 'color': Colors.blue},
+    {'name': 'Games', 'icon': Icons.videogame_asset, 'color': Colors.purple},
+    {'name': 'Business', 'icon': Icons.business, 'color': Colors.blue},
     {
-      'name': 'Announcements',
-      'icon': Icons.announcement,
+      'name': 'Public Health',
+      'icon': Icons.health_and_safety,
       'color': Colors.green
     },
-    {'name': 'Random', 'icon': Icons.emoji_emotions, 'color': Colors.orange},
+    {'name': 'Study', 'icon': Icons.school, 'color': Colors.orange},
   ];
 
   @override
@@ -21,13 +22,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Message Boards'),
+        backgroundColor: Colors.redAccent,
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
+              decoration: BoxDecoration(color: Colors.redAccent),
               child: Text(
                 'Menu',
                 style: TextStyle(color: Colors.white, fontSize: 24),
@@ -75,8 +77,10 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final board = messageBoards[index];
             return Card(
-              elevation: 4,
+              elevation: 8,
               color: board['color'],
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               child: InkWell(
                 onTap: () {
                   Navigator.push(
@@ -93,14 +97,17 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Icon(
                         board['icon'],
-                        size: 40,
+                        size: 50,
                         color: Colors.white,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         board['name'],
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),

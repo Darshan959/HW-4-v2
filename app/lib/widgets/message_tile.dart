@@ -9,12 +9,20 @@ class MessageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(message['userName'] ?? 'Anonymous'),
+      leading:
+          const Icon(Icons.account_circle, size: 40, color: Colors.blueGrey),
+      title: Text(
+        message['userName'] ?? 'Anonymous',
+        style:
+            const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+      ),
       subtitle: Text(message['message'] ?? 'No message'),
       trailing: Text(
         (message['timestamp'] as Timestamp?)?.toDate().toString() ?? '',
-        style: const TextStyle(fontSize: 10),
+        style: const TextStyle(fontSize: 10, color: Colors.grey),
       ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      tileColor: Colors.grey[100],
     );
   }
 }

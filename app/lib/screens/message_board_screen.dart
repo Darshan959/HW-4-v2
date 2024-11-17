@@ -27,7 +27,7 @@ class MessageBoardScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(boardName)),
+      appBar: AppBar(title: Text(boardName), backgroundColor: Colors.redAccent),
       body: Column(
         children: [
           Expanded(
@@ -60,12 +60,17 @@ class MessageBoardScreen extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     controller: messageController,
-                    decoration:
-                        const InputDecoration(hintText: 'Enter message'),
+                    decoration: const InputDecoration(
+                      hintText: 'Enter message...',
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.redAccent),
+                      ),
+                    ),
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.send),
+                  icon: const Icon(Icons.send, color: Colors.black),
                   onPressed: sendMessage,
                 ),
               ],
